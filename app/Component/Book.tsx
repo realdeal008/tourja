@@ -30,12 +30,14 @@ export default function Book() {
   return (
     <section className="page-section" id="book">
       <Image
-        src="/img/nightlife.jpg"
+        src="/nightlife.jpg"
         alt="Jamaica Nightlife"
-        fill
+        width={1200}
+        height={675}
         priority
         sizes="100vw"
         className="bg-image"
+        style={{ objectFit: "contain" }}
       />
 
       <div className="overlay" />

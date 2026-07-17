@@ -6,12 +6,14 @@ export default function About() {
   return (
     <section className="page-section" id="about">
       <Image
-        src="/img/jamaica-sign.jpg"
+        src="/jamaica-sign.jpg"
         alt="Jamaica Sign"
-        fill
+        width={1200}
+        height={675}
         priority
         sizes="100vw"
         className="bg-image"
+        style={{ objectFit: "contain" }}
       />
 
       <div className="overlay" />

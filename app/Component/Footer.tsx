@@ -18,12 +18,14 @@ export default function Footer() {
   return (
     <footer className="footer" id="footer">
       <Image
-        src="/img/jamaica-sign.jpg"
+        src="/jamaica-sign.jpg"
         alt="Jamaica"
-        fill
+        width={1200}
+        height={675}
         priority
         sizes="100vw"
         className="bg-image"
+        style={{ objectFit: "contain" }}
       />
 
       <div className="overlay" />

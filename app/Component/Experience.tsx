@@ -35,12 +35,14 @@ export default function Experience() {
   return (
     <section className="page-section" id="experience">
       <Image
-        src="/img/raft-bridge.jpg"
+        src="/raft-bridge.jpg"
         alt="Jamaica River Rafting Under Bridge"
-        fill
+        width={1200}
+        height={675}
         priority
         sizes="100vw"
         className="bg-image"
+        style={{ objectFit: "contain" }}
       />
 
       <div className="overlay" />

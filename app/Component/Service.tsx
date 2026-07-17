@@ -65,12 +65,14 @@ export default function Services() {
   return (
     <section className="page-section" id="services">
       <Image
-        src="/img/raft-river.jpg"
+        src="/raft-river.jpg"
         alt="Jamaica River Rafting"
-        fill
+        width={1200}
+        height={675}
         priority
         sizes="100vw"
         className="bg-image"
+        style={{ objectFit: "contain" }}
       />
 
       <div className="overlay" />

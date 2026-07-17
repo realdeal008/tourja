@@ -14,12 +14,14 @@ export default function Hero() {
   return (
     <section className="page-section" id="hero">
       <Image
-        src="/img/hero-night.jpeg"
+        src="/hero-night.jpeg"
         alt="Jamaica Night Beach"
-        fill
+        width={1200}
+        height={675}
         priority
         sizes="100vw"
         className="bg-image"
+        style={{ objectFit: "contain" }}
       />
 
       <div className="overlay" />

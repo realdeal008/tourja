@@ -1,10 +1,31 @@
 :root {
-    --jamaica-gold: #FDB813;
-    --jamaica-green: #009639;
-    --jamaica-black: #000000;
-    --jamaica-gold-light: #FFD700;
+  --jamaica-green: #1f7a1f;
+  --jamaica-gold: #f4c542;
+  --jamaica-red: #d62828;
+  --jamaica-black: #111111;
     --glass-border: rgba(253, 184, 19, 0.35);
   }
+
+
+
+.btn-primary,
+.cta-button,
+.hero-button {
+  background: linear-gradient(135deg, var(--jamaica-red), #a61b1b);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 20px rgba(214, 40, 40, 0.25);}
+
+.card:hover,
+.feature-card:hover {
+  border-color: var(--jamaica-red);
+  box-shadow: 0 8px 20px rgba(214, 40, 40, 0.2);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--jamaica-red);
+}
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -200,6 +221,15 @@
     color: #fff;
     text-shadow: 0 4px 20px rgba(0,0,0,0.9);
   }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 90px;
+    height: 3px;
+    margin: 12px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--jamaica-red), rgba(255,255,255,0.2));
+  }
   .section-title .gold { color: var(--jamaica-gold); }
 
   .section-subtitle {
@@ -224,8 +254,8 @@
   }
   .glass-card:hover {
     transform: translateY(-8px) translateZ(25px);
-    border-color: var(--jamaica-gold);
-    box-shadow: 0 15px 50px rgba(253, 184, 19, 0.18);
+    border-color: var(--jamaica-red);
+    box-shadow: 0 15px 50px rgba(214, 40, 40, 0.22);
   }
   .glass-card h3 {
     font-family: 'Playfair Display', serif;
@@ -241,13 +271,14 @@
     word-break: normal;
     overflow-wrap: anywhere;
   }
-  .glass-card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+  .glass-card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; color: var(--jamaica-red); }
 
   .cta-btn {
     display: inline-block;
     padding: 16px 45px;
-    background: linear-gradient(135deg, var(--jamaica-gold), #d4a017);
-    color: #000;
+    background: linear-gradient(135deg, var(--jamaica-red), #a61b1b);
+    color: white;
+    border: none;
     font-weight: 700;
     font-size: 0.95rem;
     letter-spacing: 0.15em;
@@ -283,17 +314,17 @@
     font-size: 0.9rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    border: 2px solid var(--jamaica-gold);
+    border: 2px solid var(--jamaica-red);
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.35s ease;
     text-decoration: none;
   }
   .cta-btn-outline:hover {
-    background: var(--jamaica-gold);
-    color: #000;
+    background: linear-gradient(135deg, var(--jamaica-red), #a61b1b);
+    color: #fff;
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(253, 184, 19, 0.35);
+    box-shadow: 0 12px 35px rgba(214, 40, 40, 0.35);
   }
 
 .services-grid {
@@ -393,7 +424,7 @@
   }
   .flag-strip .green { flex: 1; background: var(--jamaica-green); }
   .flag-strip .gold { flex: 1; background: var(--jamaica-gold); }
-  .flag-strip .black { flex: 2; background: var(--jamaica-black); }
+  .flag-strip .black { flex: 1; background: linear-gradient(90deg, var(--jamaica-red), #a61b1b); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12); }
   .flag-strip .gold2 { flex: 1; background: var(--jamaica-gold); }
   .flag-strip .green2 { flex: 1; background: var(--jamaica-green); }
 
@@ -484,7 +515,7 @@
     text-transform: uppercase;
     transition: color 0.3s ease;
   }
-  .footer-links a:hover { color: var(--jamaica-gold); }
+  .footer-links a:hover { color: var(--jamaica-red); }
   .footer-copy {
     color: rgba(255,255,255,0.4);
     font-size: 0.75rem;

@@ -1,135 +1,100 @@
+// src/components/ServicesSection.tsx
 "use client";
 
-import Image from "next/image";
+import React from 'react';
+import { BackgroundSection } from '../Component/BackgroundSection';
+import { GlassCard } from '../Component/GlassCard';
+import { useIntersectionReveal } from '../hooks/useIntersectionReveal';
 
-interface Service {
-  icon: string;
-  title: string;
-  description: string;
-  revealClass: string;
-  delay: string;
-}
+export const Services: React.FC = () => {
+  const subtitleRef = useIntersectionReveal();
+  const titleRef = useIntersectionReveal();
 
-const services: readonly Service[] = [
-  {
-    icon: "🌙",
-    title: "Island Nightlife",
-    description:
-      "Experience Jamaica's legendary nightlife — beach bonfires, cliffside bars in Negril, and the vibrant dancehall scene in Kingston. VIP access guaranteed.",
-    revealClass: "reveal-left",
-    delay: "0.1s",
-  },
-  {
-    icon: "🏝️",
-    title: "Excursions",
-    description:
-      "Raft down the Martha Brae, climb Dunn's River Falls, explore the Blue Mountains, or snorkel in Montego Bay. Every adventure tailored to you.",
-    revealClass: "reveal",
-    delay: "0.2s",
-  },
-  {
-    icon: "✈️",
-    title: "Arrival & Departure",
-    description:
-      "Seamless airport transfers from KIN, MBJ, or OCJ. Meet & greet, luggage assistance, and direct-to-resort comfort.",
-    revealClass: "reveal-right",
-    delay: "0.3s",
-  },
-  {
-    icon: "🚗",
-    title: "Luxury Transport",
-    description:
-      "Travel in style with premium SUVs, sedans, and coaches. Professional drivers, air-conditioned comfort, island-wide coverage.",
-    revealClass: "reveal-left",
-    delay: "0.4s",
-  },
-  {
-    icon: "🍽️",
-    title: "Private Dining",
-    description:
-      "From jerk pits on the beach to fine dining with ocean views. Exclusive culinary experiences showcasing Jamaican flavors.",
-    revealClass: "reveal",
-    delay: "0.5s",
-  },
-  {
-    icon: "📸",
-    title: "Custom Tours",
-    description:
-      "Bob Marley heritage tours, coffee plantations, hidden waterfalls, or off-the-beaten-path adventures — your wish is our command.",
-    revealClass: "reveal-right",
-    delay: "0.6s",
-  },
-] as const;
+  const services = [
+    {
+      icon: '🌙',
+      title: 'Island Nightlife',
+      description:
+        "Experience Jamaica's legendary nightlife — beach bonfires, cliffside bars in Negril, and the vibrant dancehall scene in Kingston. VIP access guaranteed.",
+      delay: 0.1,
+      animation: 'reveal-left' as const,
+    },
+    {
+      icon: '🏝',
+      title: 'Excursions',
+      description:
+        "Raft down the Martha Brae, climb Dunn's River Falls, explore the Blue Mountains, or snorkel in Montego Bay. Every adventure tailored to you.",
+      delay: 0.2,
+      animation: 'reveal' as const,
+    },
+    {
+      icon: '✈',
+      title: 'Arrival & Departure',
+      description:
+        'Seamless airport transfers from KIN, MBJ, or OCJ. Meet & greet, luggage assistance, and direct-to-resort comfort.',
+      delay: 0.3,
+      animation: 'reveal-right' as const,
+    },
+    {
+      icon: '🚗',
+      title: 'Luxury Transport',
+      description:
+        'Travel in style with premium SUVs, sedans, and coaches. Professional drivers, air-conditioned comfort, island-wide coverage.',
+      delay: 0.4,
+      animation: 'reveal-left' as const,
+    },
+    {
+      icon: '🍽',
+      title: 'Private Dining',
+      description:
+        'From jerk pits on the beach to fine dining with ocean views. Exclusive culinary experiences showcasing Jamaican flavors.',
+      delay: 0.5,
+      animation: 'reveal' as const,
+    },
+    {
+      icon: '📸',
+      title: 'Custom Tours',
+      description:
+        'Bob Marley heritage tours, coffee plantations, hidden waterfalls, or off-the-beaten-path adventures — your wish is our command.',
+      delay: 0.6,
+      animation: 'reveal-right' as const,
+    },
+  ];
 
-export default function Services() {
   return (
-    <section className="page-section" id="services">
-      <Image
-        src="/raft-river.jpg"
-        alt="Jamaica River Rafting"
-        width={1200}
-        height={675}
-        priority
-        sizes="100vw"
-        className="bg-image"
-        style={{ objectFit: "contain" }}
-      />
+    <BackgroundSection
+      id="services"
+      bgImage={{
+        src: '/crafts.png',
+        alt: 'Jamaica River Rafting',
+        parallaxSpeed: 0.4,
+        parallaxDirection: -1,
+      }}
+    >
+      <div style={{ width: '100%', height: '100%' }}>
 
-      <div className="overlay" />
-      <div className="mirror-glass" />
-      <div className="reflection-sweep" />
-      <div className="mirror-frame" />
-
-      <div
-        className="section-content"
-        style={{
-          width: "100%",
-          maxWidth: "1300px",
-        }}
-      >
-        <div className="reveal-scale">
+        <div ref={subtitleRef} className="reveal-scale">
           <p className="section-subtitle">What We Offer</p>
         </div>
-
-        <div className="reveal">
+        <div ref={titleRef} className="reveal">
           <h2 className="section-title">
             Premium <span className="gold">Services</span>
           </h2>
         </div>
 
-        <div
-          className="services-grid"
-          style={{
-            marginTop: "50px",
-          }}
-        >
-          {services.map(
-            ({ icon, title, description, revealClass, delay }) => (
-              <div
-                key={title}
-                className={`glass-card ${revealClass}`}
-                style={{
-                  transitionDelay: delay,
-                }}
-              >
-                <span className="icon">{icon}</span>
-
-                <h3>{title}</h3>
-
-                <p>{description}</p>
-              </div>
-            )
-          )}
+        <div className="services-grid" style={{ marginTop: '50px' }}>
+          {services.map((service, index) => (
+            <GlassCard
+              key={index}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              delay={service.delay}
+              animation={service.animation}
+            />
+          ))}
         </div>
       </div>
-
-      <div className="flag-strip">
-        <div className="green" />
-        <div className="gold" />
-        <div className="black" />
-        <div className="gold2" />
-        <div className="green2" />
-      </div>
-    </section>
+    </BackgroundSection>
   );
-}
+};

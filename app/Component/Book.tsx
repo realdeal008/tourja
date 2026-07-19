@@ -1,181 +1,156 @@
+// src/components/BookingSection.tsx
 "use client";
 
-import type { FormEvent } from "react";
-import Image from "next/image";
+import React, { useState, FormEvent } from 'react';
+import { BackgroundSection } from '../Component/BackgroundSection';
+import { useIntersectionReveal } from '../hooks/useIntersectionReveal';
 
-interface ServiceOption {
-  value: string;
-  label: string;
+interface BookingFormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  serviceType: string;
+  travelDates: string;
+  specialRequests: string;
 }
 
-const services: readonly ServiceOption[] = [
-  { value: "", label: "Select a service..." },
-  { value: "nightlife", label: "Island Nightlife" },
-  { value: "excursion", label: "Excursion / Tour" },
-  { value: "arrival", label: "Arrival Transfer" },
-  { value: "departure", label: "Departure Transfer" },
-  { value: "transport", label: "Luxury Transport" },
-  { value: "custom", label: "Custom Package" },
-] as const;
+export const Book: React.FC = () => {
+  const subtitleRef = useIntersectionReveal();
+  const titleRef = useIntersectionReveal();
+  const formRef = useIntersectionReveal();
 
-export default function Book() {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const [formData, setFormData] = useState<BookingFormData>({
+    fullName: '',
+    email: '',
+    phone: '',
+    serviceType: '',
+    travelDates: '',
+    specialRequests: '',
+  });
 
-    alert(
-      "Thank you! We will contact you shortly to confirm your booking."
-    );
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    alert('Thank you! We will contact you shortly to confirm your booking.');
+  };
+
+  const serviceOptions = [
+    { value: '', label: 'Select a service...' },
+    { value: 'nightlife', label: 'Island Nightlife' },
+    { value: 'excursion', label: 'Excursion / Tour' },
+    { value: 'arrival', label: 'Arrival Transfer' },
+    { value: 'departure', label: 'Departure Transfer' },
+    { value: 'transport', label: 'Luxury Transport' },
+    { value: 'custom', label: 'Custom Package' },
+  ];
+
   return (
-    <section className="page-section" id="book">
-      <Image
-        src="/nightlife.jpg"
-        alt="Jamaica Nightlife"
-        width={1200}
-        height={675}
-        priority
-        sizes="100vw"
-        className="bg-image"
-        style={{ objectFit: "contain" }}
-      />
-
-      <div className="overlay" />
-      <div className="mirror-glass" />
-      <div className="reflection-sweep" />
-      <div className="mirror-frame" />
-
-      <div
-        className="section-content"
-        style={{
-          width: "100%",
-          maxWidth: "700px",
-        }}
-      >
-        <div className="reveal-scale">
+    <BackgroundSection
+      id="book"
+      bgImage={{
+src: '/live.png',
+        alt: 'Jamaica Nightlife',
+        parallaxSpeed: 0.35,
+        parallaxDirection: -1,
+      }}
+    >
+      <div style={{ width: '100%', maxWidth: '700px' }}>
+        <div ref={subtitleRef} className="reveal-scale">
           <p className="section-subtitle">Start Your Journey</p>
         </div>
-
-        <div className="reveal">
+        <div ref={titleRef} className="reveal">
           <h2 className="section-title">
             Book <span className="gold">Now</span>
           </h2>
         </div>
 
-        <div
-          className="reveal"
-          style={{
-            transitionDelay: "0.2s",
-            marginTop: "35px",
-          }}
-        >
-          <form
-            className="contact-form glass-card"
-            onSubmit={handleSubmit}
-          >
+        <div ref={formRef} className="reveal" style={{ transitionDelay: '0.2s', marginTop: '35px' }}>
+          <form className="contact-form glass-card" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Full Name</label>
-
+              <label htmlFor="fullName">Full Name</label>
               <input
-                id="name"
-                name="name"
                 type="text"
+                id="fullName"
+                name="fullName"
                 placeholder="Enter your full name"
-                autoComplete="name"
+                value={formData.fullName}
+                onChange={handleChange}
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-
               <input
+                type="email"
                 id="email"
                 name="email"
-                type="email"
                 placeholder="your@email.com"
-                autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="phone">Phone Number</label>
-
               <input
+                type="tel"
                 id="phone"
                 name="phone"
-                type="tel"
                 placeholder="+1 (555) 000-0000"
-                autoComplete="tel"
+                value={formData.phone}
+                onChange={handleChange}
                 required
               />
             </div>
-
             <div className="form-group">
-              <label htmlFor="service">Service Type</label>
-
+              <label htmlFor="serviceType">Service Type</label>
               <select
-                id="service"
-                name="service"
-                defaultValue=""
+                id="serviceType"
+                name="serviceType"
+                value={formData.serviceType}
+                onChange={handleChange}
                 required
               >
-                {services.map(({ value, label }) => (
-                  <option
-                    key={value || "placeholder"}
-                    value={value}
-                    disabled={value === ""}
-                  >
-                    {label}
+                {serviceOptions.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
                   </option>
                 ))}
               </select>
             </div>
-
             <div className="form-group">
-              <label htmlFor="dates">Travel Dates</label>
-
+              <label htmlFor="travelDates">Travel Dates</label>
               <input
-                id="dates"
-                name="dates"
                 type="text"
+                id="travelDates"
+                name="travelDates"
                 placeholder="e.g., Dec 15 - Dec 22, 2026"
+                value={formData.travelDates}
+                onChange={handleChange}
               />
             </div>
-
             <div className="form-group">
-              <label htmlFor="requests">Special Requests</label>
-
+              <label htmlFor="specialRequests">Special Requests</label>
               <textarea
-                id="requests"
-                name="requests"
-                rows={5}
+                id="specialRequests"
+                name="specialRequests"
                 placeholder="Tell us about your dream Jamaican experience..."
+                value={formData.specialRequests}
+                onChange={handleChange}
               />
             </div>
-
-            <button
-              type="submit"
-              className="cta-btn"
-              style={{
-                width: "100%",
-                marginTop: "8px",
-              }}
-            >
+            <button type="submit" className="cta-btn" style={{ width: '100%', marginTop: '8px' }}>
               Submit Booking Request
             </button>
           </form>
         </div>
       </div>
-
-      <div className="flag-strip">
-        <div className="green" />
-        <div className="gold" />
-        <div className="black" />
-        <div className="gold2" />
-        <div className="green2" />
-      </div>
-    </section>
+    </BackgroundSection>
   );
-}
+};

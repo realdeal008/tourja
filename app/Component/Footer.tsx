@@ -1,74 +1,108 @@
+// src/components/FooterSection.tsx
 "use client";
 
-import Image from "next/image";
+import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { useIntersectionReveal } from '../hooks/useIntersectionReveal';
+import { useScrollMotion } from '../hooks/useScrollMotion';
 
-interface FooterLink {
-  href: string;
-  label: string;
-}
+export const Footer: React.FC = () => {
+  const brandRef = useIntersectionReveal();
+  const linksRef = useIntersectionReveal();
+  const copyRef = useIntersectionReveal();
 
-const footerLinks: readonly FooterLink[] = [
-  { href: "#hero", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#book", label: "Book Now" },
-] as const;
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const bgRef = useRef<HTMLImageElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
 
-export default function Footer() {
+  const { scrollY } = useScrollMotion();
+
+  const navLinks = [
+    { href: '#hero', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#services', label: 'Services' },
+    { href: '#book', label: 'Book Now' },
+  ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const bgImg = bgRef.current;
+    const overlay = overlayRef.current;
+    if (!section || !bgImg) return;
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    // Only animate if near viewport
+    if (rect.top < viewportHeight + 300 && rect.bottom > -300) {
+      const sectionCenter = rect.top + rect.height / 2;
+      const viewportCenter = viewportHeight / 2;
+      const offset = (viewportCenter - sectionCenter) * 0.4;
+      const contentOffset = (viewportCenter - sectionCenter) * 0.1;
+
+      const speed = 0.25; // footer-specific parallax speed
+      const direction = 1;
+
+      const sectionProgress = Math.max(
+        0,
+        Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height))
+      );
+      const scale = 1 + Math.sin(sectionProgress * Math.PI) * 0.12;
+
+      const translateY = offset * speed;
+      const translateX = offset * speed * 0.08 * direction;
+
+      bgImg.style.transform = `scale(${scale}) translate3d(${translateX}px, ${translateY}px, 0)`;
+
+      // Footer has no separate content ref; still shift overlay gradient like sections
+      if (overlay) {
+        const gradientAngle = 180 + (offset / viewportHeight) * 20;
+        overlay.style.background = `linear-gradient(${gradientAngle}deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.55) 100%)`;
+      }
+
+      // (Optional) minor content parallax if desired later.
+      // const content = section.querySelector('.footer-content') as HTMLElement | null;
+      // if (content) content.style.transform = `translate3d(0, ${contentOffset * -0.06}px, 0)`;
+    }
+  }, [scrollY]);
+
   return (
-    <footer className="footer" id="footer">
+    <footer className="footer" id="footer" ref={sectionRef}>
       <Image
-        src="/jamaica-sign.jpg"
-        alt="Jamaica"
-        width={1200}
-        height={675}
-        priority
-        sizes="100vw"
+        ref={bgRef}
+        src="/dusk.png"
         className="bg-image"
-        style={{ objectFit: "contain" }}
+        alt="Jamaica"
+        fill
+        sizes="1000px"
+        priority
       />
-
-      <div className="overlay" />
+      <div className="overlay scroll-shift" ref={overlayRef} />
       <div className="mirror-glass" />
       <div className="mirror-frame" />
 
       <div className="footer-content">
-        <div className="reveal">
-          <div className="footer-brand">
-            JRG TOUR JA BY TREY
-          </div>
+        <div ref={brandRef} className="reveal">
+          <div className="footer-brand">JRG TOUR JA BY TREY</div>
         </div>
-
-        <div
-          className="reveal"
-          style={{
-            transitionDelay: "0.15s",
-          }}
-        >
-          <nav
-            className="footer-links"
-            aria-label="Footer Navigation"
-          >
-            {footerLinks.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-              >
-                {label}
+        <div ref={linksRef} className="reveal" style={{ transitionDelay: '0.15s' }}>
+          <div className="footer-links">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href)}>
+                {link.label}
               </a>
             ))}
-          </nav>
+          </div>
         </div>
-
-        <div
-          className="reveal"
-          style={{
-            transitionDelay: "0.3s",
-          }}
-        >
+        <div ref={copyRef} className="reveal" style={{ transitionDelay: '0.3s' }}>
           <p className="footer-copy">
-            &copy; {new Date().getFullYear()} JRG Tour JA by Trey.
-            All rights reserved. Jamaica, W.I.
+            © 2026 JRG Tour JA by Trey. All rights reserved. Jamaica, W.I.
           </p>
         </div>
       </div>
@@ -82,4 +116,5 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+

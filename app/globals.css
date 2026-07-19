@@ -11,15 +11,16 @@
 
   body {
     font-family: 'Montserrat', sans-serif;
-    background: #000;
+    background: #d8d8d8;
     color: #fff;
     overflow-x: hidden;
   }
 
-  .page-section {
+.page-section {
     position: relative;
     width: 100%;
-    height: 100vh;
+    /* Allow content to grow on mobile/web instead of clipping at 100vh */
+    height: auto;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -32,6 +33,15 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+  }
+ .bg-imag {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -222,11 +232,14 @@
     font-size: 1.6rem;
     color: var(--jamaica-gold);
     margin-bottom: 12px;
+    line-height: 1.2;
   }
   .glass-card p {
     color: rgba(255,255,255,0.85);
     line-height: 1.65;
     font-size: 0.9rem;
+    word-break: normal;
+    overflow-wrap: anywhere;
   }
   .glass-card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
 
@@ -283,13 +296,14 @@
     box-shadow: 0 12px 35px rgba(253, 184, 19, 0.35);
   }
 
-  .services-grid {
+.services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    min-width: 0;
   }
 
   .stats-grid {
@@ -479,8 +493,87 @@
 
   @media (max-width: 768px) {
     .section-content { padding: 30px 20px; }
-    .glass-card { padding: 25px 18px; }
+    .glass-card { padding: 22px 16px; }
+    .glass-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .glass-card p { font-size: 0.88rem; }
     .page-section .mirror-frame { top: 8px; left: 8px; right: 8px; bottom: 8px; }
     .services-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+/* ===== SCROLL-DRIVEN MOTION BACKGROUNDS (NO BLINK) ===== */
+
+.bg-image {
+  will-change: transform;
+}
+
+/* Parallax layers - different speeds per section */
+.page-section:nth-child(1) .bg-image { --parallax-speed: 0.3; }
+.page-section:nth-child(2) .bg-image { --parallax-speed: 0.5; }
+.page-section:nth-child(3) .bg-image { --parallax-speed: 0.4; }
+.page-section:nth-child(4) .bg-image { --parallax-speed: 0.6; }
+.page-section:nth-child(5) .bg-image { --parallax-speed: 0.35; }
+.footer .bg-image { --parallax-speed: 0.25; }
+
+/* Ken Burns slow drift - continuous, never stops */
+@keyframes kenBurns {
+  0% { transform: scale(1.02) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-0.5%, -0.5%); }
+  100% { transform: scale(1.02) translate(0, 0); }
+}
+
+.bg-image.ken-burns {
+  animation: kenBurns 20s ease-in-out infinite;
+}
+
+/* Blur on fast scroll - smooth transition */
+.bg-image.blur-scroll {
+  transition: filter 0.4s ease;
+}
+.bg-image.blur-scroll.fast-scroll {
+  filter: blur(3px);
+}
+
+/* Horizontal parallax for variety */
+.page-section:nth-child(odd) .bg-image {
+  --parallax-direction: -1;
+}
+.page-section:nth-child(even) .bg-image {
+  --parallax-direction: 1;
+}
+
+/* Gradient overlay that shifts with scroll - smooth */
+.overlay.scroll-shift {
+  transition: background 0.6s ease;
+}
+
+/* Particles - always visible, no toggle */
+.particle {
+  opacity: 0.4;
+}
+
+/* Mirror glass - always visible, no toggle */
+.mirror-glass {
+  opacity: 1;
+}
+
+/* Text parallax - content moves opposite to background */
+.section-content {
+  will-change: transform;
+}
+
+/* Section entrance - happens once per section, no repeat */
+.page-section {
+  opacity: 1;
+}
+
+/* Smooth fade for content reveals only */
+.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-flip {
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.reveal.visible, .reveal-left.visible, .reveal-right.visible, 
+.reveal-scale.visible, .reveal-flip.visible {
+  opacity: 1;
+  transform: none;
+}

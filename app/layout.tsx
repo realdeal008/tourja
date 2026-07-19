@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import AnimationProvider from "./Component/AnimationProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,7 +41,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
-      <AnimationProvider />
+      
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

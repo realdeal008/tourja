@@ -291,6 +291,13 @@
     overflow: hidden;
     text-decoration: none;
   }
+  .book-cta-btn {
+    background: linear-gradient(135deg, var(--jamaica-green), #144b14);
+    box-shadow: 0 8px 20px rgba(31, 122, 31, 0.25);
+  }
+  .book-cta-btn:hover {
+    box-shadow: 0 12px 35px rgba(31, 122, 31, 0.35);
+  }
   .cta-btn::before {
     content: '';
     position: absolute;

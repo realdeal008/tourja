@@ -145,7 +145,7 @@ src: '/live.png',
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" className="cta-btn" style={{ width: '100%', marginTop: '8px' }}>
+            <button type="submit" className="cta-btn book-cta-btn" style={{ width: '100%', marginTop: '8px' }}>
               Submit Booking Request
             </button>
           </form>

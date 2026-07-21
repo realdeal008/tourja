@@ -269,6 +269,7 @@
     color: var(--jamaica-green);
     line-height: 1.65;
     font-size: 0.9rem;
+    font-weight: 700;
     word-break: normal;
     overflow-wrap: anywhere;
   }
@@ -413,7 +414,7 @@
   .scroll-indicator span {
     display: block;
     width: 1px; height: 50px;
-    background: linear-gradient(to bottom, var(--jamaica-gold), transparent);
+    background: linear-gradient(to bottom, var(--jamaica-red), transparent);
     margin: 0 auto;
   }
   .scroll-indicator p {
@@ -545,6 +546,7 @@
     .page-section .mirror-frame { top: 8px; left: 8px; right: 8px; bottom: 8px; }
     .services-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-content {margin-top: 20px; padding: 30px 15px; }
   }
 
 /* ===== SCROLL-DRIVEN MOTION BACKGROUNDS (NO BLINK) ===== */

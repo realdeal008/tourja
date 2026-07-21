@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
     <footer className="footer" id="footer" ref={sectionRef}>
       <Image
         ref={bgRef}
-        src="/dusk.png"
+        src="/fusk.png"
         className="bg-image"
         alt="Jamaica"
         fill
@@ -89,7 +89,19 @@ export const Footer: React.FC = () => {
 
       <div className="footer-content">
         <div ref={brandRef} className="reveal">
-          <div className="footer-brand">J.R.G TOUR JA BY TREY</div>
+          <div className="footer-brand">
+            <span className="green-accent">J</span>
+            <span className="gold">.</span>
+            <span className="gold">R</span>
+            <span className="red-accent">G</span>
+            {' '}
+            <span className="red-accent">TOURS</span>
+            {' '}
+            <span className="green-accent">JA</span>
+            {' '}
+            BY{' '}
+            <span className="gold">TREY</span>
+          </div>
         </div>
         <div ref={linksRef} className="reveal" style={{ transitionDelay: '0.15s' }}>
           <div className="footer-links">
@@ -102,7 +114,7 @@ export const Footer: React.FC = () => {
         </div>
         <div ref={copyRef} className="reveal" style={{ transitionDelay: '0.3s' }}>
           <p className="footer-copy">
-            © 2026 J.R.G Tour JA by Trey. All rights reserved. Jamaica, W.I.
+            © 2026 J.R.G Tours JA by Trey. All rights reserved. Jamaica, W.I.
           </p>
         </div>
       </div>

@@ -191,9 +191,22 @@
     margin-bottom: 18px;
     text-shadow: 0 4px 25px rgba(0,0,0,0.9);
   }
-  .hero-title .gold { color: var(--jamaica-gold); display: block; font-style: italic; }
+  .hero-title-yellow,
+  .hero-title-green {
+    font-family: 'Playfair Display', serif;
+    font-size: inherit;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .hero-title-yellow { color: var(--jamaica-gold); }
+  .hero-title-green {
+    color: var(--jamaica-green);
+    font-style: italic;
+  }
 
   .hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
     font-size: clamp(0.9rem, 2vw, 1.3rem);
     font-weight: 300;
     letter-spacing: 0.35em;
@@ -204,6 +217,7 @@
   }
 
   .hero-tagline {
+    font-family: 'Montserrat', sans-serif;
     font-size: clamp(1rem, 1.8vw, 1.25rem);
     font-weight: 300;
     color: rgba(255,255,255,0.9);
@@ -234,6 +248,7 @@
   .section-title .green-accent { color: var(--jamaica-green); }
 
   .section-subtitle {
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 0.85rem;
     letter-spacing: 0.45em;
@@ -314,11 +329,14 @@
     box-shadow: 0 12px 35px rgba(253, 184, 19, 0.45);
   }
   .hero-cta-btn {
-    background: linear-gradient(135deg, var(--jamaica-green), #144b14);
-    box-shadow: 0 8px 20px rgba(31, 122, 31, 0.25);
+    background: #ffffff;
+    color: #111111;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.22);
   }
   .hero-cta-btn:hover {
-    box-shadow: 0 12px 35px rgba(31, 122, 31, 0.35);
+    background: #f5f5f5;
+    color: #111111;
+    box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
   }
 
   .cta-btn-outline {

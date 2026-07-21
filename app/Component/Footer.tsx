@@ -90,7 +90,13 @@ export const Footer: React.FC = () => {
       <div className="footer-content">
         <div ref={brandRef} className="reveal">
           <div className="footer-brand">
-            <span className="red-accent">J.R.G</span>
+            <span className="brand-initials">
+              <span className="green-letter">J</span>
+              <span className="dot-letter">.</span>
+              <span className="gold-letter">R</span>
+              <span className="dot-letter">.</span>
+              <span className="red-letter">G</span>
+            </span>
             {' '}
             <span className="gold">TOURS</span>
             {' '}

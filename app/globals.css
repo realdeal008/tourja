@@ -544,6 +544,11 @@
     white-space: nowrap;
   }
   .white-text { color: #ffffff; }
+  .brand-initials { display: inline-flex; align-items: center; }
+  .green-letter { color: var(--jamaica-green); }
+  .gold-letter { color: var(--jamaica-gold); }
+  .red-letter { color: var(--jamaica-red); }
+  .dot-letter { color: var(--jamaica-gold); }
   .footer-links {
     display: flex;
     justify-content: center;

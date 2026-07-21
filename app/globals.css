@@ -283,19 +283,19 @@
   .glass-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
-    color: var(--jamaica-gold);
+    color: #ffffff;
     margin-bottom: 12px;
     line-height: 1.2;
   }
   .glass-card p {
-    color: var(--jamaica-green);
+    color: #ffffff;
     line-height: 1.65;
     font-size: 0.9rem;
     font-weight: 700;
     word-break: normal;
     overflow-wrap: anywhere;
   }
-  .glass-card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; color: var(--jamaica-red); }
+  .glass-card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; color: #ffffff; }
 
   .cta-btn {
     display: inline-block;

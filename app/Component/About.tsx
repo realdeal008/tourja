@@ -26,7 +26,7 @@ export const About: React.FC = () => {
       </div>
       <div ref={titleRef} className="reveal">
         <h2 className="section-title">
-          <span className="green-accent">The Heart of the</span> <span className="gold">Caribbean</span>
+          <span className="red-accent">The Heart of the</span> <span className="gold">Caribbean</span>
         </h2>
       </div>
       <div ref={taglineRef} className="reveal" style={{ transitionDelay: '0.2s' }}>

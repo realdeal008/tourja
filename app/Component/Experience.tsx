@@ -32,7 +32,7 @@ export const Experience: React.FC = () => {
       </div>
       <div ref={titleRef} className="reveal">
         <h2 className="section-title">
-          <span className="black-accent">The</span> <span className="gold">JRG</span> <span className="green-accent">Difference</span>
+          <span className="white-accent">The</span> <span className="gold">JRG</span> <span className="green-accent">Difference</span>
         </h2>
       </div>
 

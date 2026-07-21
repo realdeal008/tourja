@@ -540,7 +540,8 @@
     color: var(--jamaica-gold);
     margin-bottom: 20px;
     text-shadow: 0 4px 20px rgba(0,0,0,0.9);
-    font-weight: 500;
+    font-weight: 700;
+    white-space: nowrap;
   }
   .white-text { color: #ffffff; }
   .footer-links {

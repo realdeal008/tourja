@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
     <footer className="footer" id="footer" ref={sectionRef}>
       <Image
         ref={bgRef}
-        src="/fusk.png"
+        src="/kusk.png"
         className="bg-image"
         alt="Jamaica"
         fill
@@ -90,17 +90,13 @@ export const Footer: React.FC = () => {
       <div className="footer-content">
         <div ref={brandRef} className="reveal">
           <div className="footer-brand">
-            <span className="green-accent">J</span>
-            <span className="gold">.</span>
-            <span className="gold">R</span>
-            <span className="red-accent">G</span>
+            <span className="red-accent">J.R.G</span>
             {' '}
-            <span className="red-accent">TOURS</span>
+            <span className="gold">TOURS</span>
             {' '}
-            <span className="green-accent">JA</span>
+            <span className="green-accent">BY</span>
             {' '}
-            BY{' '}
-            <span className="gold">TREY</span>
+            <span className="white-text">TREY</span>
           </div>
         </div>
         <div ref={linksRef} className="reveal" style={{ transitionDelay: '0.15s' }}>

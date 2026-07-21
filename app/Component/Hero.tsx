@@ -48,7 +48,7 @@ export const HeroSection: React.FC = () => {
         </p>
       </div>
       <div ref={ctaRef} className="reveal" style={{ transitionDelay: '0.45s' }}>
-        <a href="#book" className="cta-btn">
+        <a href="#book" className="cta-btn hero-cta-btn">
           Book Your Experience
         </a>
       </div>

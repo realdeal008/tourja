@@ -283,7 +283,7 @@
   .glass-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
-    color: #ffffff;
+    color: var(--jamaica-gold);
     margin-bottom: 12px;
     line-height: 1.2;
   }

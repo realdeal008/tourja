@@ -35,7 +35,7 @@ export const HeroSection: React.FC = () => {
       </div>
       <div ref={titleRef} className="reveal">
         <h1 className="hero-title">
-          <span className="hero-title-yellow">J.R.G   TOUR</span> <br></br>
+          <span className="hero-title-yellow">J.R.G   TOURS</span> <br></br>
           <span className="hero-title-green">JA BY TREY</span>
         </h1>
       </div>

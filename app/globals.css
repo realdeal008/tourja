@@ -249,9 +249,9 @@
     background: linear-gradient(90deg, var(--jamaica-red), rgba(255,255,255,0.2));
   }
   .section-title .gold { color: var(--jamaica-gold); }
-  .section-title .green-accent { color: var(--jamaica-green); }
   .section-title .white-accent { color: #ffffff; }
   .section-title .black-accent { color: #111111; }
+  .green-accent { color: var(--jamaica-green); }
   .red-accent { color: var(--jamaica-red); }
 
   .section-subtitle {

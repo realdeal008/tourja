@@ -26,11 +26,11 @@ export const About: React.FC = () => {
       </div>
       <div ref={titleRef} className="reveal">
         <h2 className="section-title">
-          <span className="gold">The Heart of the</span> <span className="white-accent">Caribbean</span>
+          <span className="green-accent">The Heart of the</span> <span className="gold">Caribbean</span>
         </h2>
       </div>
       <div ref={taglineRef} className="reveal" style={{ transitionDelay: '0.2s' }}>
-        <p className="hero-tagline green-paragraph" style={{ maxWidth: '700px' }}>
+        <p className="hero-tagline white-paragraph" style={{ maxWidth: '700px' }}>
 From the rhythmic pulse of Kingston&apos;s streets to the tranquil waters of
           Negril's Seven Mile Beach, Jamaica is a symphony of culture, adventure, and
           natural beauty. Let us be your guide to every hidden gem.

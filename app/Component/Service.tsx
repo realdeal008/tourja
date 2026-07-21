@@ -78,7 +78,7 @@ export const Services: React.FC = () => {
         </div>
         <div ref={titleRef} className="reveal">
           <h2 className="section-title">
-            Premium <span className="gold">Services</span>
+            <span className="green-accent">Premium</span> <span className="gold">Services</span>
           </h2>
         </div>
 

@@ -231,6 +231,7 @@
     background: linear-gradient(90deg, var(--jamaica-red), rgba(255,255,255,0.2));
   }
   .section-title .gold { color: var(--jamaica-gold); }
+  .section-title .green-accent { color: var(--jamaica-green); }
 
   .section-subtitle {
     text-align: center;
@@ -265,7 +266,7 @@
     line-height: 1.2;
   }
   .glass-card p {
-    color: rgba(255,255,255,0.85);
+    color: var(--jamaica-green);
     line-height: 1.65;
     font-size: 0.9rem;
     word-break: normal;

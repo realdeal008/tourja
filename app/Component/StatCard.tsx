@@ -12,7 +12,7 @@ export const StatCard: React.FC<StatCardProps> = ({ value, label, delay = 0 }) =
     <div ref={ref} className="reveal-flip" style={{ transitionDelay: `${delay}s` }}>
       <div className="glass-card" style={{ textAlign: 'center', padding: '30px 20px' }}>
         <h3 style={{ fontSize: '2.5rem', color: 'var(--jamaica-gold)', marginBottom: '8px', fontFamily: "'Playfair Display', serif" }}>
-          {value}
+          {value === '5000+' ? <span className="red-accent">{value}</span> : value === '24/7' ? <span className="green-accent">{value}</span> : value}
         </h3>
         <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem' }}>{label}</p>
       </div>

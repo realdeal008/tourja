@@ -228,6 +228,7 @@
   }
   .green-paragraph {
     color: var(--jamaica-green);
+    font-weight: 700;
   }
 
   .section-title {

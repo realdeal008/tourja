@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
             {' '}
             <span className="gold">TOURS</span>
             {' '}
-            <span className="red-accent">JA</span>
+<span className="black-accent">JA</span>
             {' '}
             <span className="white-text">BY TREY</span>
           </div>

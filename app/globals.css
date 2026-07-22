@@ -251,8 +251,9 @@
   .section-title .gold { color: var(--jamaica-gold); }
   .section-title .white-accent { color: #ffffff; }
   .section-title .black-accent { color: #111111; }
-  .green-accent { color: var(--jamaica-green); }
+.green-accent { color: var(--jamaica-green); }
   .red-accent { color: var(--jamaica-red); }
+  .black-accent { color: var(--jamaica-black); }
 
   .section-subtitle {
     font-family: 'Montserrat', sans-serif;

@@ -100,9 +100,9 @@ export const Footer: React.FC = () => {
             {' '}
             <span className="gold">TOURS</span>
             {' '}
-            <span className="green-accent">BY</span>
+            <span className="red-accent">JA</span>
             {' '}
-            <span className="white-text">TREY</span>
+            <span className="white-text">BY TREY</span>
           </div>
         </div>
         <div ref={linksRef} className="reveal" style={{ transitionDelay: '0.15s' }}>
